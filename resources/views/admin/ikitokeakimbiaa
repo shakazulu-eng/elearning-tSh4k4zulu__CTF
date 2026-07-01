@@ -1,0 +1,16 @@
+!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+</head>
+<body>
+    <h1>ADMIN DASHBOARD</h1>
+
+    <ul>
+        <li><a href="/admin/courses/create">Post Video / Document</a></li>
+        <li><a href="/admin/quizzes/create">Create Quiz</a></li>
+    </ul>
+</body>
+</html>
+
+

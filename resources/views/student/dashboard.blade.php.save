@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Dashboard</title>
+</head>
+<body>
+    <h1>STUDENT DASHBOARD</h1>
+
+    <h3>Learning Materials</h3>
+
+    @foreach($courses as $course)
+        <div>
+            <h4>{{ $course->title }}</h4>
+
+            @if($course->type === 'video')
+                <video width="400" controls>
+                    <source src="{{ asset('storage/'.$course->file.mp4) }}">
+                </video>
+            @else
+               <a href="{{ asset('storage/documents/file.pdf') }}" download>
+   Download
+</a>
+
+            @endif
+        </div>
+    @endforeach
+</body>
+</html>
