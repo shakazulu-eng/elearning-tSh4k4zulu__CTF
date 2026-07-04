@@ -22,7 +22,8 @@ RUN mkdir -p storage/framework/sessions
 RUN mkdir -p storage/logs
 RUN mkdir -p bootstrap/cache
 
-RUN chmod -R 777 storage bootstrap/cache
+RUN chmod -R 775 storage bootstrap/cache
+EXPOSE 10000
 
 CMD php artisan optimize:clear && \
     php artisan config:cache && \
