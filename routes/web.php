@@ -279,17 +279,32 @@ Route::get('/assistant', function () {
 Route::post('/assistant/chat', [PublicAIController::class,'chat']);
 
 ///
+
 Route::get('/create-admin', function () {
 
-    User::updateOrCreate(
-        ['email' => 'salummuhidini748@gmail.com'],
-        [
-            'name' => 'Th4kazulu',
-            'password' => Hash::make('Mlanz1.2'),
-            'role' => 'admin',
-        ]
-    );
+    try {
 
-    return 'Admin created successfully!';
+        $user = \App\Models\User::updateOrCreate(
+            ['email' => 'salummuhidini748@gmail.com'],
+            [
+                'name' => 'Th4kazulu',
+                'password' => \Illuminate\Support\Facades\Hash::make('Mlanz1.2'),
+                'role' => 'admin',
+            ]
+        );
+
+        return response()->json($user);
+
+    } catch (\Throwable $e) {
+
+        return response()->json([
+            'error' => $e->getMessage(),
+            'line' => $e->getLine(),
+            'file' => $e->getFile(),
+        ], 500);
+
+    }
+
 });
+
 require __DIR__.'/auth.php';
