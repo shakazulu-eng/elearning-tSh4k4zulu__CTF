@@ -1,3 +1,4 @@
+php artisan optimize:clear
 FROM php:8.4-cli
 
 RUN apt-get update && apt-get install -y \
@@ -26,6 +27,7 @@ RUN chmod -R 775 storage bootstrap/cache
 EXPOSE 10000
 
 CMD php artisan optimize:clear && \
+    php artisan migrate --force && \
     php artisan config:cache && \
     php artisan route:cache || true && \
     php artisan view:cache || true && \
